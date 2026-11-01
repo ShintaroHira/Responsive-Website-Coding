@@ -1,0 +1,13 @@
+{
+  "name": "nadyapark-blue-radical-lp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ナディアパークデンタルクリニック ブルーラジカル治療 LP",
+  "scripts": {
+    "build": "sass --no-source-map --style=expanded scss/style.scss css/style.css",
+    "watch": "sass --no-source-map --watch scss/style.scss css/style.css"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

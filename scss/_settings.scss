@@ -1,0 +1,50 @@
+// ------------------------------------------------------------
+// Design tokens
+// ------------------------------------------------------------
+$navy: #0c1050;
+$navy-deep: #010228;
+$navy-mid: #0e286c;
+$gold: #b8963f;
+$gold-light: #e0c068;
+$gold-pale: #f5e7a8;
+$ink: #333;
+$white: #fff;
+
+$serif: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+$sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+
+$gold-gradient: linear-gradient(90deg, #e0c068 0%, #b8944a 45%, #e8d08c 80%, #f5e7a8 100%);
+$navy-gradient: linear-gradient(90deg, #0c1050 0%, #0e286c 100%);
+
+$bp-sp: 1023px;
+
+// The whole page is drawn on a 1920px canvas. u(n) is "n design pixels":
+// exactly n px on a 1920px wide page, and proportional at any other desktop width.
+@function u($n) {
+  @return calc(var(--u) * #{$n});
+}
+
+@mixin sp {
+  @media (max-width: $bp-sp) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: #{$bp-sp + 1}) {
+    @content;
+  }
+}
+
+@mixin gradient-text($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin serif($weight: 600) {
+  font-family: $serif;
+  font-weight: $weight;
+  font-feature-settings: 'palt';
+}

@@ -1,0 +1,682 @@
+@use 'settings' as *;
+
+// Our periodontal care ----------------------------------------
+.treatment {
+  height: u(3370);
+  background: $white url('../images/bg-treatment.jpg') center top / 100% auto no-repeat;
+
+  &__title {
+    position: relative;
+    text-align: center;
+    padding-top: u(145);
+
+    span {
+      display: block;
+      white-space: nowrap;
+    }
+  }
+
+  &__en {
+    @include gradient-text(linear-gradient(90deg, #ae8959 0%, #ae8959 45%, #af8d63 52%, #89775d 62%, #89775d 100%));
+    width: max-content;
+    margin: 0 auto;
+    @include serif(600);
+    font-size: u(115);
+    line-height: u(150);
+    letter-spacing: .02em;
+  }
+
+  &__ja {
+    margin-top: u(55);
+    @include serif(600);
+    font-size: u(60);
+    line-height: u(90);
+    letter-spacing: .016em;
+    color: $navy;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: u(22);
+
+    &::before,
+    &::after {
+      content: '';
+      width: u(280);
+      height: u(2);
+      background: linear-gradient(90deg, transparent, #a07b6c 60%, #6b3640);
+    }
+
+    &::before {
+      transform: translateY(u(9));
+    }
+
+    &::after {
+      transform: translateY(u(6)) scaleX(-1);
+    }
+  }
+
+  &__lead {
+    margin-top: u(61);
+    padding-right: u(16);
+    text-align: center;
+    @include serif(600);
+    font-size: u(34);
+    line-height: u(50);
+    letter-spacing: .043em;
+    color: $navy;
+    white-space: nowrap;
+  }
+
+  &__p {
+    margin: u(60) 0 0 u(124);
+    font-size: u(27);
+    line-height: u(56);
+    letter-spacing: .09em;
+    white-space: nowrap;
+  }
+}
+
+.care {
+  position: absolute;
+  left: u(60);
+  width: u(1800);
+  height: u(550);
+  background-position: center;
+  background-size: 100% 100%;
+  box-shadow: 0 u(6) u(16) rgba(0, 0, 0, .2);
+  color: $white;
+
+  @each $n, $top in (1: 932, 2: 1521, 3: 2110, 4: 2699) {
+    &--#{$n} {
+      top: u($top);
+      background-image: url('../images/care-bg-#{$n}.jpg');
+    }
+  }
+
+  &__img {
+    position: absolute;
+    left: u(949);
+    top: 0;
+    width: u(788);
+    height: u(550);
+    max-width: none;
+  }
+
+  &--rev &__img {
+    left: u(64);
+  }
+
+  &__body {
+    position: absolute;
+    left: u(67);
+    top: u(49);
+    white-space: nowrap;
+  }
+
+  &--rev &__body {
+    left: u(933);
+    top: u(50);
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    @include serif(600);
+    font-size: u(35);
+    line-height: u(48);
+    letter-spacing: .016em;
+    color: $gold-light;
+
+    span + span {
+      position: relative;
+      top: u(7);
+    }
+  }
+
+  &__num {
+    margin-right: u(19);
+    font-size: u(110);
+    font-weight: 500;
+    line-height: u(96);
+    letter-spacing: .016em;
+  }
+
+  &__text {
+    margin: u(26) 0 0 u(6);
+    font-size: u(28);
+    line-height: u(56);
+    letter-spacing: .05em;
+  }
+}
+
+// Second opinion ----------------------------------------------
+.second {
+  height: u(1240);
+  background: url('../images/bg-second-opinion.jpg') center top / 100% 100% no-repeat;
+
+  .heading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: u(173);
+    color: $navy;
+  }
+
+  .heading__en {
+    font-size: u(61.5);
+    line-height: u(74);
+    letter-spacing: .05em;
+    color: #1b2263;
+  }
+
+  .divider {
+    margin-top: u(19);
+  }
+
+  .heading__ja {
+    margin-top: u(17);
+    font-size: u(58);
+    line-height: u(84);
+    letter-spacing: .05em;
+    font-feature-settings: 'palt';
+  }
+
+  &__chip {
+    position: absolute;
+    left: u(598);
+    top: u(427);
+    width: u(721);
+    height: u(59);
+    border-radius: u(3);
+    background: $gold-pale;
+    text-align: center;
+    @include serif(600);
+    font-size: u(36);
+    line-height: u(59);
+    letter-spacing: .01em;
+    box-shadow: u(2) u(2) u(3) rgba(0, 0, 0, .15);
+  }
+
+  &__boxes {
+    position: absolute;
+    left: u(57);
+    top: u(532);
+    width: u(1803);
+    display: flex;
+    gap: u(37);
+  }
+
+  &__box {
+    width: u(883);
+    height: u(459);
+    padding: u(28) 0 0 u(73);
+    background: $white;
+    font-size: u(28);
+    line-height: u(56);
+    letter-spacing: .05em;
+    white-space: nowrap;
+
+    &--list {
+      padding-left: u(59);
+
+      li::before {
+        content: '●';
+      }
+    }
+  }
+
+  &__foot {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: u(1069);
+    padding-right: u(4);
+    text-align: center;
+    @include serif(600);
+    font-size: u(34);
+    line-height: u(50);
+    letter-spacing: .03em;
+  }
+}
+
+// Doctor ------------------------------------------------------
+.doctor {
+  height: u(2005);
+
+  &__title {
+    padding-top: u(196);
+    text-align: center;
+  }
+
+  &__en {
+    display: block;
+    @include gradient-text(linear-gradient(90deg, #0c1050 0%, #0a2a7a 100%));
+    width: max-content;
+    margin: 0 auto;
+    @include serif(600);
+    font-size: u(116);
+    line-height: u(130);
+    letter-spacing: .03em;
+  }
+
+  &__ja {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: u(38);
+
+    &::before {
+      transform: translateY(u(3));
+    }
+
+    margin-top: u(8);
+    @include serif(600);
+    font-size: u(60);
+    line-height: u(84);
+    letter-spacing: .016em;
+
+    &::before,
+    &::after {
+      content: '';
+      width: u(280);
+      height: u(2);
+      background: linear-gradient(90deg, transparent, #a07b6c 60%, #6b3640);
+    }
+
+    &::after {
+      transform: translateY(u(3)) scaleX(-1);
+    }
+  }
+
+  &__greet {
+    position: absolute;
+    left: u(120);
+    top: u(503);
+    width: u(874);
+    height: u(817);
+    padding-top: u(50);
+    background: url('../images/doctor-frame.svg') center / 100% 100% no-repeat;
+
+    h3 {
+      text-align: center;
+      padding-left: u(24);
+      font-weight: 700;
+      font-size: u(33);
+      line-height: u(40);
+      letter-spacing: .09em;
+      color: #1e2d4e;
+    }
+
+    p {
+      margin: u(12) 0 0 u(105);
+      font-size: u(29.5);
+      line-height: u(60);
+      letter-spacing: .075em;
+      color: #1e2d4e;
+      white-space: nowrap;
+    }
+
+    .doctor__name {
+      margin: u(14) 0 0;
+      padding-left: u(22);
+      text-align: center;
+      @include serif(600);
+      font-size: u(36);
+      line-height: u(60);
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    left: u(1108);
+    top: u(503);
+
+    img {
+      position: relative;
+      width: u(628);
+      height: u(841);
+      max-width: none;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: u(23);
+      top: u(22);
+      width: u(628);
+      height: u(841);
+      background: #6f9cd6;
+      box-shadow: 0 u(4) u(10) rgba(0, 0, 0, .15);
+    }
+  }
+
+  &__cred {
+    position: absolute;
+    left: u(117);
+    top: u(1387);
+    width: u(876);
+    height: u(605);
+    padding: u(49) 0 0 u(53);
+    background: linear-gradient(180deg, #596fb6 0%, #5f7bc8 100%);
+    color: $white;
+    box-shadow: 0 u(6) u(14) rgba(0, 0, 0, .15);
+
+    h3 {
+      width: u(274);
+      height: u(54);
+      background: $white;
+      color: $navy;
+      font-weight: 700;
+      font-size: u(29);
+      line-height: u(54);
+      letter-spacing: .14em;
+      text-align: center;
+    }
+
+    ul {
+      margin-top: u(11);
+      font-size: u(29);
+      line-height: u(50);
+      letter-spacing: .052em;
+      white-space: nowrap;
+    }
+
+    li::before {
+      content: '';
+      display: inline-block;
+      width: u(26);
+      height: u(26);
+      margin-right: u(13);
+      border-radius: 50%;
+      background: $white;
+      vertical-align: u(-3);
+    }
+  }
+
+  &__career {
+    position: absolute;
+    left: u(1049);
+    top: u(1506);
+
+    h3 {
+      width: u(127);
+      height: u(52);
+      margin-left: u(11);
+      background: $navy-gradient;
+      color: $white;
+      font-weight: 700;
+      font-size: u(29);
+      line-height: u(52);
+      letter-spacing: .14em;
+      text-align: center;
+    }
+
+    dl {
+      margin-top: u(22);
+      font-size: u(29);
+      line-height: u(56);
+      letter-spacing: .07em;
+      white-space: nowrap;
+    }
+
+    dt,
+    dd {
+      display: inline;
+    }
+
+    dt {
+      display: inline-block;
+      width: u(162);
+    }
+  }
+}
+
+.risk {
+  height: u(1311);
+
+  &__title {
+    padding-top: u(115);
+    padding-right: u(16);
+    text-align: center;
+    @include serif(700);
+    font-size: u(58);
+    line-height: u(76);
+    letter-spacing: .05em;
+    font-feature-settings: 'palt';
+    color: $navy;
+    white-space: nowrap;
+  }
+
+  &__grid {
+    position: absolute;
+    left: u(58);
+    top: u(256);
+    width: u(1804);
+    display: grid;
+    grid-template-columns: u(870) u(870);
+    grid-template-rows: u(484) auto;
+    column-gap: u(64);
+  }
+
+  &__h {
+    height: u(94);
+    background: linear-gradient(100deg, #2a56e0 0%, #0a1c74 28%, #000f58 100%);
+    color: $white;
+    text-align: center;
+    @include serif(600);
+    font-size: u(36);
+    line-height: u(94);
+    letter-spacing: .05em;
+    font-feature-settings: 'palt';
+    white-space: nowrap;
+  }
+
+  &__list {
+    margin-top: u(21);
+    font-size: u(28);
+    line-height: u(56);
+    letter-spacing: .05em;
+    white-space: nowrap;
+
+    li {
+      position: relative;
+      padding-left: u(63);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: u(8);
+        top: u(8);
+        width: u(41);
+        height: u(41);
+        background: url('../images/icon-ok.svg') center / 100% 100% no-repeat;
+      }
+    }
+
+    &--ok li {
+      margin-bottom: u(16);
+    }
+
+    &--ng li {
+      padding-left: u(60);
+
+      &::before {
+        left: u(5);
+        top: u(9);
+        width: u(36);
+        height: u(36);
+        background-image: url('../images/icon-ng.svg');
+      }
+    }
+  }
+
+  &__p {
+    margin: u(27) 0 0 u(24);
+    font-size: u(28);
+    line-height: u(56);
+    letter-spacing: .05em;
+    white-space: nowrap;
+  }
+}
+
+// Flow --------------------------------------------------------
+.flow {
+  height: u(3130);
+  background: url('../images/bg-flow.jpg') center top / 100% 100% no-repeat;
+
+  &__title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: u(144);
+    text-align: center;
+    color: $white;
+  }
+
+  &__en {
+    display: block;
+    @include gradient-text(linear-gradient(90deg, #dcb565 0%, #f4d9a0 55%, #cdb980 100%));
+    width: max-content;
+    margin: 0 auto;
+    @include serif(600);
+    font-size: u(120);
+    line-height: u(128);
+    letter-spacing: .02em;
+    filter: drop-shadow(0 0 u(5) rgba(255, 255, 255, .25));
+  }
+
+  .divider {
+    margin-top: u(23);
+  }
+
+  &__ja {
+    display: block;
+    margin-top: u(8);
+    @include serif(600);
+    font-size: u(62);
+    line-height: u(84);
+    letter-spacing: .016em;
+    text-shadow: 0 u(2) u(10) rgba(20, 30, 90, .6);
+  }
+
+  &__list {
+    position: absolute;
+    left: u(386);
+    top: u(478);
+    width: u(1150);
+  }
+}
+
+.flow-card {
+  position: relative;
+  height: u(300);
+  margin-bottom: u(57);
+  background: rgba(255, 255, 255, .947);
+
+  &:nth-child(3) {
+    margin-bottom: u(58);
+  }
+
+  &--last {
+    height: u(360);
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: u(8);
+    background: linear-gradient(90deg, #e1bd80 0%, #cfa752 50%, #ecc78e 80%, #f1d09b 100%);
+  }
+
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: u(466);
+    top: 100%;
+    width: u(218);
+    height: u(36);
+    background: linear-gradient(180deg, #f6e0b4 0%, #c0953d 100%);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+
+  &__head {
+    position: absolute;
+    left: u(6);
+    top: u(-16);
+    width: u(700);
+    height: u(102);
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: u(292);
+      max-width: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: u(31);
+      top: u(98);
+      width: u(647);
+      height: u(2);
+      background: linear-gradient(90deg, #d7bd8f, #c8ab74 60%, #e0c79a);
+    }
+
+    h3 {
+      position: absolute;
+      left: u(303);
+      top: u(46);
+      @include serif(700);
+      font-size: u(36);
+      line-height: u(50);
+      letter-spacing: .04em;
+      font-feature-settings: 'palt';
+      color: $navy;
+      white-space: nowrap;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    left: u(36);
+    top: u(96);
+    font-size: u(28);
+    line-height: u(51.5);
+    letter-spacing: .045em;
+    white-space: nowrap;
+
+    &--2 {
+      top: u(95);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    left: u(719);
+    top: u(26);
+    width: u(400);
+    height: u(251);
+    max-width: none;
+  }
+
+  &:nth-child(4) &__img {
+    top: u(25);
+  }
+
+  &--last &__img {
+    top: u(42);
+    height: u(287);
+  }
+
+  @each $n, $top in (2: 99, 3: 99, 4: 99, 5: 100, 6: 100, 7: 101) {
+    &:nth-child(#{$n}) &__head::after {
+      top: u($top);
+    }
+  }
+}

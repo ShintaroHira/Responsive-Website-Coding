@@ -1,0 +1,1498 @@
+@use 'settings' as *;
+
+// The design covers the 1920px desktop page only. Below 1024px the canvas is
+// released: u() becomes a fixed type scale and every section stacks.
+@include sp {
+  html {
+    scroll-padding-top: 64px;
+  }
+
+  body {
+    padding-bottom: 56px;
+  }
+
+  .page {
+    --u: .52px;
+    container-type: normal;
+
+    * {
+      white-space: normal !important;
+    }
+
+    section,
+    .footer {
+      position: relative;
+      height: auto;
+    }
+  }
+
+  // Header + drawer ---------------------------------------------
+  .header {
+    --u: .46px;
+    right: 0;
+    background: none;
+  }
+
+  .header__contact {
+    display: none;
+  }
+
+  .drawer {
+    --u: .6px;
+    justify-content: flex-start;
+    padding: 72px 16px 80px;
+    overflow-y: auto;
+
+    &__list,
+    &__contact {
+      width: 100%;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 16px;
+    }
+
+    &__list a {
+      font-size: 14px;
+      letter-spacing: .02em;
+    }
+
+    &__contact a {
+      font-size: 12px;
+
+      b {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .sp-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: flex;
+    height: 56px;
+
+    &__btn {
+      flex: 1;
+      color: $white;
+      font-family: $serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 56px;
+      text-align: center;
+    }
+
+    &__btn--tel { background: linear-gradient(90deg, #0a3cae 0%, #000f58 100%); }
+    &__btn--web { background: $gold-gradient; }
+    &__btn--line { background: #0dc438; }
+  }
+
+  // Main visual -------------------------------------------------
+  .mv {
+    display: flex;
+    flex-direction: column;
+    min-height: 620px;
+    padding: 16px 16px 24px;
+    overflow: hidden;
+
+    &__bg img {
+      object-position: 42% top;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(1, 2, 40, .15) 0%, rgba(1, 2, 40, 0) 22%, rgba(1, 2, 40, .25) 48%, rgba(1, 2, 40, .78) 100%);
+    }
+
+    > *:not(.mv__bg) {
+      position: relative;
+      z-index: 2;
+    }
+
+    &__logo {
+      left: auto;
+      top: auto;
+      --u: .42px;
+
+      .logo__kana {
+        display: none;
+      }
+    }
+
+    &__pill {
+      left: auto;
+      top: auto;
+      align-self: flex-start;
+      width: auto;
+      height: 34px;
+      margin-top: 12px;
+      padding-right: 12px;
+      font-size: 12px;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        margin-right: 4px;
+      }
+
+      b {
+        font-size: 14px;
+      }
+    }
+
+    &__badge-r,
+    &__badge-l,
+    &__en {
+      display: none;
+    }
+
+    &__title {
+      --u: min(.5px, calc(100vw / 800));
+      position: relative;
+      inset: auto;
+      margin-top: auto;
+      padding-top: 180px;
+
+      span {
+        position: static;
+        display: block;
+      }
+    }
+
+    &__sub {
+      left: auto;
+      top: auto;
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.7;
+      letter-spacing: .04em;
+    }
+  }
+
+  // Self-check --------------------------------------------------
+  .check {
+    padding: 32px 16px;
+    background-size: cover;
+
+    &__card {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 24px 12px;
+    }
+
+    &__title {
+      position: static;
+      font-size: 20px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    &__list {
+      position: static;
+      width: auto;
+
+      li {
+        height: auto;
+        min-height: 40px;
+        margin-bottom: 8px;
+        padding: 8px 8px 8px 38px;
+        font-size: 13px;
+        line-height: 1.5;
+
+        &::before {
+          left: 6px;
+          top: 50%;
+          width: 24px;
+          height: 25px;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    &__photo {
+      position: static;
+      margin: 16px 0;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__lead {
+      position: static;
+      margin-top: 20px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+  }
+
+  // What is Blue Radical ----------------------------------------
+  .about {
+    height: 56vw;
+    min-height: 220px;
+    background-size: cover;
+
+    &::before {
+      inset: 8px;
+    }
+
+    &__title {
+      top: auto;
+      bottom: 18px;
+      padding: 0 16px;
+
+      span:first-child {
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      span:last-child {
+        margin-top: 4px;
+        font-size: 24px;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  .intro {
+    padding: 32px 16px 0;
+
+    &__figure {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: auto;
+
+      img {
+        width: 100%;
+        height: auto;
+        margin: 0;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__badge {
+      position: static;
+      width: 100%;
+      height: auto;
+      font-size: 14px;
+      line-height: 36px;
+    }
+
+    &__panel {
+      position: static;
+      width: auto;
+      height: auto;
+      margin-top: 24px;
+      padding: 24px 16px;
+    }
+
+    &__h {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    &__p {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.9;
+      letter-spacing: .03em;
+    }
+  }
+
+  .how {
+    padding: 40px 16px 32px;
+
+    &__title span:first-child {
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    &__title span:last-child {
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__lead {
+      margin-top: 12px;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+  }
+
+  .device {
+    padding: 32px 16px;
+
+    &__head,
+    &__logo,
+    &__tag,
+    &__text,
+    &__img {
+      position: static;
+      max-width: 100%;
+    }
+
+    &__head {
+      padding: 0;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    &__logo {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    &__tag {
+      width: 150px;
+      height: 44px;
+      margin-top: 16px;
+      font-size: 26px;
+      line-height: 44px;
+    }
+
+    &__text {
+      margin-top: 12px;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__img {
+      width: 100%;
+      margin-top: 16px;
+    }
+  }
+
+  .steps {
+    padding: 32px 16px;
+
+    &__title {
+      position: static;
+      display: block;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.6;
+      letter-spacing: .02em;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    &__list {
+      position: static;
+      flex-direction: column;
+      gap: 52px;
+      margin-top: 52px;
+    }
+
+    &__banner {
+      position: static;
+      width: auto;
+      height: auto;
+      margin-top: 32px;
+      padding: 10px 12px;
+      font-size: 15px;
+      line-height: 1.6;
+      letter-spacing: .02em;
+
+      b {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .step {
+    width: auto;
+    height: auto;
+    padding: 44px 16px 16px;
+
+    &__num,
+    &--2 &__num,
+    &:nth-child(3) &__num {
+      left: 50%;
+      top: -32px;
+      width: 64px;
+      height: 64px;
+      margin-left: -32px;
+      font-size: 36px;
+      line-height: 64px;
+    }
+
+    &__title {
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    &__text,
+    &--2 &__text {
+      margin: 10px 0 0;
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: .03em;
+    }
+
+    &__img,
+    &--2 &__img {
+      position: static;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  // Tables ------------------------------------------------------
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .evidence,
+  .compare,
+  .fee {
+    .table-wrap {
+      position: static;
+      width: auto;
+      margin: 20px 0 0;
+    }
+
+    .table {
+      min-width: 600px;
+      font-size: 13px;
+      letter-spacing: .03em;
+
+      th,
+      td,
+      thead th,
+      thead td,
+      tbody th,
+      tbody td {
+        height: auto !important;
+        padding: 8px 10px;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      tr > * {
+        width: auto !important;
+      }
+    }
+  }
+
+  .compare .table tr > :nth-child(1) {
+    width: 130px !important;
+  }
+
+  .fee .table {
+    min-width: 660px;
+
+    tr > :nth-child(1) {
+      width: 220px !important;
+    }
+
+    tr > :nth-child(2) {
+      width: 190px !important;
+    }
+  }
+
+  .evidence {
+    padding: 40px 16px;
+
+    .heading__en {
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .divider {
+      width: 100%;
+      height: 8px;
+    }
+
+    .heading__ja {
+      margin-top: 4px;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__lead {
+      margin-top: 16px;
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: .02em;
+    }
+
+    &__p,
+    &__p--a,
+    &__p--b,
+    &__p--c,
+    &__p--d {
+      margin: 12px 0 0;
+      font-size: 13px;
+      line-height: 1.8;
+      letter-spacing: .03em;
+    }
+  }
+
+  .compare {
+    padding: 40px 16px;
+
+    &__title span:last-child {
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__en {
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    &__lead {
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    &__note,
+    &__note--2,
+    &__note--3 {
+      margin: 10px 0 0;
+      font-size: 13px;
+      line-height: 1.8;
+      letter-spacing: .03em;
+    }
+  }
+
+  // Our periodontal care ----------------------------------------
+  .treatment {
+    padding: 0 16px 24px;
+    background-image: none;
+
+    &__title {
+      padding-top: 36px;
+    }
+
+    &__en {
+      width: auto;
+      font-size: 34px;
+      line-height: 1.2;
+    }
+
+    &__ja {
+      margin-top: 8px;
+      font-size: 22px;
+      line-height: 1.5;
+      gap: 10px;
+
+      &::before,
+      &::after {
+        width: 32px;
+      }
+    }
+
+    &__lead {
+      margin-top: 16px;
+      padding: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      letter-spacing: .02em;
+    }
+
+    &__p {
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.9;
+      letter-spacing: .03em;
+    }
+  }
+
+  .care {
+    position: static;
+    display: flex;
+    flex-direction: column-reverse;
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+    background-color: #020222;
+    background-image: none !important;
+
+    &__img,
+    &--rev &__img {
+      position: static;
+      width: 100%;
+      height: auto;
+    }
+
+    &__body,
+    &--rev &__body {
+      position: static;
+      padding: 16px;
+    }
+
+    &__title {
+      font-size: 17px;
+      line-height: 1.5;
+
+      span + span {
+        top: 0;
+      }
+    }
+
+    &__num {
+      flex: none;
+      margin-right: 12px;
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    &__text {
+      margin: 10px 0 0;
+      font-size: 14px;
+      line-height: 1.85;
+      letter-spacing: .03em;
+    }
+  }
+
+  // Second opinion ----------------------------------------------
+  .second {
+    padding: 40px 16px;
+    background: #f7f7f8;
+
+    .heading {
+      position: static;
+    }
+
+    .heading__en {
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .divider {
+      width: 100%;
+      height: 8px;
+    }
+
+    .heading__ja {
+      margin-top: 6px;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    &__chip {
+      position: static;
+      width: auto;
+      height: auto;
+      margin-top: 16px;
+      padding: 8px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    &__boxes {
+      position: static;
+      flex-direction: column;
+      width: auto;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    &__box,
+    &__box--list {
+      width: auto;
+      height: auto;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.85;
+      letter-spacing: .03em;
+    }
+
+    &__foot {
+      position: static;
+      margin-top: 20px;
+      padding: 0;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  }
+
+  // Doctor ------------------------------------------------------
+  .doctor {
+    padding: 0 16px 32px;
+
+    &__title {
+      padding-top: 36px;
+    }
+
+    &__en {
+      font-size: 40px;
+      line-height: 1.2;
+    }
+
+    &__ja {
+      gap: 12px;
+      font-size: 22px;
+      line-height: 1.5;
+
+      &::before,
+      &::after {
+        width: 40px;
+      }
+    }
+
+    &__grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    &__photo {
+      position: static;
+      order: -1;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__greet,
+    &__cred,
+    &__career {
+      position: static;
+      width: auto;
+      height: auto;
+    }
+
+    &__greet {
+      padding: 24px 16px;
+      background: none;
+      border: 1px solid #d2cbc7;
+
+      h3 {
+        padding: 0;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      p {
+        margin: 10px 0 0;
+        font-size: 14px;
+        line-height: 1.9;
+        letter-spacing: .03em;
+      }
+
+      .doctor__name {
+        margin-top: 12px;
+        padding: 0;
+        font-size: 17px;
+        line-height: 1.5;
+      }
+    }
+
+    &__cred {
+      padding: 16px;
+
+      h3 {
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+        line-height: 30px;
+      }
+
+      ul {
+        font-size: 13px;
+        line-height: 1.75;
+        letter-spacing: .02em;
+      }
+
+      li {
+        padding-left: 18px;
+        text-indent: -18px;
+      }
+
+      li::before {
+        width: 12px;
+        height: 12px;
+        margin-right: 6px;
+        vertical-align: -1px;
+      }
+    }
+
+    &__career {
+      h3 {
+        width: 70px;
+        height: 30px;
+        margin-left: 0;
+        font-size: 14px;
+        line-height: 30px;
+      }
+
+      dl {
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.8;
+        letter-spacing: .02em;
+      }
+
+      div {
+        display: flex;
+      }
+
+      dt {
+        flex: none;
+        width: 84px;
+      }
+
+      dd {
+        display: block;
+      }
+    }
+  }
+
+  .risk {
+    padding: 16px 16px 32px;
+
+    &__title {
+      padding: 0;
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: .02em;
+    }
+
+    &__grid {
+      position: static;
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    &__h {
+      height: auto;
+      padding: 10px;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    &__list,
+    &__p {
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.85;
+      letter-spacing: .03em;
+    }
+
+    &__list li,
+    &__list--ng li {
+      margin-bottom: 8px;
+      padding-left: 28px;
+
+      &::before {
+        left: 2px;
+        top: 3px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  // Flow --------------------------------------------------------
+  .flow {
+    padding: 40px 16px 32px;
+    background-size: cover;
+
+    &__title,
+    &__list {
+      position: static;
+      width: auto;
+    }
+
+    &__en {
+      font-size: 40px;
+      line-height: 1.2;
+    }
+
+    .divider {
+      width: 100%;
+      height: 8px;
+    }
+
+    &__ja {
+      margin-top: 6px;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__list {
+      margin-top: 24px;
+    }
+  }
+
+  .flow-card,
+  .flow-card--last {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 44px;
+    padding: 18px 12px 12px;
+
+    &::after {
+      left: 50%;
+      width: 80px;
+      height: 22px;
+      margin-left: -40px;
+    }
+
+    &__head {
+      position: relative;
+      left: auto;
+      top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0 10px;
+      width: auto;
+      height: auto;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #c8ab74;
+
+      &::after {
+        display: none;
+      }
+
+      img {
+        position: static;
+        width: 130px;
+      }
+
+      h3 {
+        position: static;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    }
+
+    &__text,
+    &__text--2 {
+      position: static;
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.85;
+      letter-spacing: .03em;
+    }
+
+    &__img,
+    &--last &__img {
+      position: static;
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+    }
+  }
+
+  .flow-card--last {
+    margin-bottom: 0;
+  }
+
+  // Consultation block ------------------------------------------
+  .cta,
+  .cta--1,
+  .cta--2,
+  .cta--3 {
+    padding: 36px 16px;
+
+    .cta__inner {
+      position: static;
+      width: auto;
+    }
+
+    .cta__title {
+      display: block;
+      padding: 0;
+      text-align: center;
+      font-size: 19px;
+      line-height: 1.5;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    .cta__lead {
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: .02em;
+      text-indent: 0;
+    }
+
+    .cta__checks {
+      grid-template-columns: 1fr;
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.9;
+      letter-spacing: .03em;
+
+      li {
+        padding-left: 20px;
+
+        &::before {
+          left: 2px;
+          top: 6px;
+          width: 6px;
+          height: 11px;
+          border-width: 1px;
+        }
+      }
+    }
+
+    .cta__clinic {
+      position: static;
+      width: auto;
+      margin-top: 20px;
+
+      .logo {
+        position: relative;
+        left: auto;
+        top: auto;
+        --u: .44px;
+      }
+
+      .logo__kana {
+        position: static;
+        margin-left: 60px;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .cta__address {
+      position: static;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 3px solid $navy;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .hours {
+      position: static;
+      width: auto;
+      height: auto;
+      margin-top: 16px;
+      padding: 0 6px;
+      border-radius: 10px;
+      border-width: 1px;
+      font-size: 12px;
+      letter-spacing: 0;
+
+      tr > * {
+        height: 40px !important;
+        padding: 0;
+        width: auto;
+      }
+
+      th:first-child {
+        width: 88px;
+      }
+
+      tr + tr th,
+      tr + tr td {
+        border-top-width: 1px;
+      }
+
+      i {
+        width: 12px;
+        height: 12px;
+      }
+
+      s {
+        width: 12px;
+        height: 2px;
+      }
+    }
+
+    .cta-btns {
+      position: static;
+      margin-top: 20px;
+    }
+  }
+
+  .cta-btns {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cta-btn {
+    width: 100%;
+    height: 60px;
+    padding: 0;
+    font-size: 18px;
+
+    &--tel {
+      gap: 12px;
+      font-size: 20px;
+
+      svg {
+        width: 30px;
+        height: 37px;
+      }
+
+      small {
+        margin-bottom: 2px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  // Fee + payment -----------------------------------------------
+  .fee {
+    padding: 40px 16px;
+    background-size: cover;
+
+    &__title {
+      padding: 0;
+    }
+
+    &__en {
+      font-size: 44px;
+      line-height: 1.1;
+    }
+
+    &__ja {
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__note,
+    .table-wrap + &__note {
+      margin: 10px 0 0;
+      font-size: 13px;
+      line-height: 1.8;
+      letter-spacing: .03em;
+    }
+  }
+
+  .payment {
+    padding: 40px 16px;
+    background-size: cover;
+
+    &__title {
+      padding: 0;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__lead {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    &__list {
+      position: static;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+  }
+
+  .pay {
+    width: auto;
+    height: auto;
+    padding: 20px 16px;
+    background: #020222 !important;
+
+    h3,
+    &--1 h3 {
+      padding: 0;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &__icon {
+      position: static;
+      margin: 12px auto;
+      transform: scale(.7);
+    }
+
+    &__icon--cash,
+    &__icon--calc,
+    &__icon--card {
+      margin: 0 auto;
+    }
+
+    p {
+      position: static;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+  }
+
+  // FAQ ---------------------------------------------------------
+  .faq {
+    padding: 40px 16px;
+
+    &__title {
+      padding: 0;
+    }
+
+    &__en {
+      font-size: 44px;
+      line-height: 1.2;
+    }
+
+    .divider {
+      width: 100%;
+      height: 8px;
+      margin-top: 0;
+    }
+
+    &__ja {
+      margin-top: 4px;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__list {
+      position: static;
+      width: auto;
+      margin-top: 20px;
+    }
+
+    &__item {
+      margin-bottom: 12px;
+      background: #eef1f4 none !important;
+    }
+
+    &__q {
+      height: auto;
+      min-height: 48px;
+      padding: 8px 40px 8px 0;
+      background: $navy;
+    }
+
+    &__mark {
+      flex: none;
+      width: 36px;
+      padding: 0;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    &__text {
+      margin-left: 4px;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: .03em;
+    }
+
+    &__icon {
+      right: 12px;
+      top: 50%;
+      width: 16px;
+      height: 2px;
+    }
+
+    &__a p,
+    &__item.is-open &__a p,
+    &__item--6.is-open &__a p {
+      height: auto;
+      padding: 0 12px;
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: .02em;
+    }
+
+    &__item.is-open &__a p {
+      padding-top: 10px;
+      padding-bottom: 12px;
+    }
+  }
+
+  // Access ------------------------------------------------------
+  .access {
+    padding: 40px 16px;
+    background-size: cover;
+
+    &__title {
+      padding: 0;
+    }
+
+    &__en {
+      font-size: 44px;
+      line-height: 1.2;
+    }
+
+    &__ja {
+      margin-top: 4px;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    &__panel {
+      position: static;
+      width: auto;
+      height: auto;
+      margin-top: 20px;
+      padding-bottom: 12px;
+    }
+
+    &__map {
+      width: 100%;
+      height: 280px;
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        zoom: 1;
+      }
+    }
+
+    &__h,
+    &__h--car {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 16px 12px 0;
+      font-size: 15px;
+      line-height: 34px;
+    }
+
+    &__row,
+    &__row--car {
+      position: static;
+      flex-direction: column;
+      gap: 8px;
+      margin: 8px 12px 0;
+    }
+
+    &__box,
+    &__box--car,
+    &__box--info {
+      width: auto;
+      height: auto;
+      min-height: 72px;
+      padding: 10px;
+
+      p,
+      &--2 p {
+        margin: 0 0 0 12px;
+        font-size: 14px;
+        line-height: 1.6;
+        letter-spacing: .02em;
+      }
+    }
+
+    &__box--info {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 8px;
+    }
+
+    &__icon {
+      width: 52px;
+      height: 52px;
+      margin-left: 0;
+
+      svg {
+        width: 32px;
+        height: 36px;
+      }
+
+      .is-car {
+        height: 30px;
+      }
+    }
+
+    &__pin,
+    &__tel-icon {
+      position: static;
+      width: 24px;
+      height: 30px;
+    }
+
+    address,
+    &__tel {
+      position: static;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    &__tel {
+      font-size: 18px;
+    }
+  }
+
+  // Footer ------------------------------------------------------
+  .footer {
+    padding: 32px 16px;
+
+    &__nav {
+      position: static;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: none;
+      gap: 0 12px;
+      font-size: 13px;
+      line-height: 2.4;
+      letter-spacing: .02em;
+
+      a {
+        padding-left: 16px;
+
+        &::before {
+          left: 0;
+          top: 8px;
+          width: 6px;
+          height: 16px;
+        }
+      }
+    }
+
+    .cta-btns {
+      position: static;
+      width: auto;
+      margin-top: 20px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}

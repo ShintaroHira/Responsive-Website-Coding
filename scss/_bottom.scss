@@ -1,0 +1,570 @@
+@use 'settings' as *;
+
+// Fee ---------------------------------------------------------
+.fee {
+  height: u(1125);
+  background: url('../images/bg-fee.jpg') center top / 100% 100% no-repeat;
+  color: $white;
+
+  &__title {
+    padding-top: u(135);
+    text-align: center;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__en {
+    @include gradient-text(linear-gradient(90deg, #d9b56b, #e8c98c));
+    width: max-content;
+    margin: 0 auto;
+    @include serif(600);
+    font-size: u(111);
+    line-height: u(130);
+    letter-spacing: .03em;
+  }
+
+  &__ja {
+    margin-top: u(22);
+    @include serif(600);
+    font-size: u(58);
+    line-height: u(84);
+    letter-spacing: .03em;
+    text-shadow: 0 0 u(8) rgba(255, 255, 255, .25);
+  }
+
+  .table-wrap {
+    position: absolute;
+    left: u(131);
+    top: u(437);
+    width: u(1656);
+  }
+
+  .table {
+    font-size: u(31);
+    letter-spacing: .08em;
+
+    thead th {
+      height: u(60);
+      font-size: u(36);
+      border-color: $white;
+      border-top-color: $navy;
+    }
+
+    tbody th {
+      background: $navy-gradient;
+      color: $white;
+      padding-left: u(34);
+      border-color: $white;
+      white-space: nowrap;
+      line-height: u(44);
+    }
+
+    td {
+      padding-left: u(34);
+      line-height: u(44);
+    }
+
+    td:last-child {
+      padding-left: u(29);
+    }
+
+    thead th:nth-child(1) { padding-right: u(18); }
+    thead th:nth-child(2) { padding-left: u(26); }
+    thead th:nth-child(3) { padding-left: u(14); }
+
+    tbody tr:first-child td:last-child {
+      letter-spacing: .055em;
+    }
+
+    tbody tr:nth-child(1) > * { height: u(116); }
+    tbody tr:nth-child(2) > * { height: u(60); }
+    tbody tr:nth-child(3) > * { height: u(114); }
+    tbody tr:nth-child(4) > * { height: u(62); }
+
+    tr > :nth-child(1) { width: u(540); }
+    tr > :nth-child(2) { width: u(543); }
+  }
+
+  &__note {
+    margin-left: u(147);
+    font-size: u(26.5);
+    line-height: u(56);
+    letter-spacing: .06em;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, .92);
+
+    &:first-of-type {
+      position: relative;
+    }
+  }
+
+  .table-wrap + &__note {
+    margin-top: u(534);
+  }
+}
+
+// Payment -----------------------------------------------------
+.payment {
+  height: u(1036);
+  background: url('../images/bg-payment.jpg') center top / 100% 100% no-repeat;
+
+  &__title {
+    padding-top: u(126);
+    text-align: center;
+    @include serif(600);
+    font-size: u(59);
+    line-height: u(84);
+    letter-spacing: .016em;
+  }
+
+  &__lead {
+    margin-top: u(23);
+    text-align: center;
+    font-size: u(28);
+    line-height: u(50);
+    letter-spacing: .045em;
+    font-feature-settings: 'palt';
+  }
+
+  &__list {
+    position: absolute;
+    left: u(179);
+    top: u(338);
+    display: flex;
+    gap: u(60);
+  }
+}
+
+.pay {
+  position: relative;
+  width: u(480);
+  height: u(568);
+  background-size: 100% 100%;
+  box-shadow: 0 u(6) u(14) rgba(0, 0, 0, .22);
+  color: $white;
+  text-align: center;
+
+  @each $n in (1, 2, 3) {
+    &--#{$n} {
+      background-image: url('../images/pay-bg-#{$n}.jpg');
+    }
+  }
+
+  h3 {
+    padding-top: u(82);
+    @include serif(600);
+    font-size: u(41);
+    line-height: u(60);
+    letter-spacing: .03em;
+    color: $gold-light;
+  }
+
+  &--1 h3 {
+    padding-top: u(78);
+    font-size: u(49);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: u(20);
+    right: u(20);
+    top: u(404);
+    height: u(2);
+    background:
+      repeating-linear-gradient(90deg, transparent 0 1px, #03042c 1px 3px),
+      linear-gradient(90deg, transparent 0%, #c9a35e 35%, #d3ae66 65%, transparent 100%);
+  }
+
+  &__icon {
+    position: absolute;
+    left: 50%;
+    top: u(195);
+    color: $white;
+
+    &--cash { width: u(166); height: u(152); margin-left: u(-82); top: u(194); }
+    &--calc { width: u(124); height: u(152); margin-left: u(-62); }
+    &--card { width: u(166); height: u(168); margin-left: u(-82); top: u(187); }
+  }
+
+  p {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: u(421);
+    padding-left: u(8);
+    font-size: u(29);
+    line-height: u(48);
+    letter-spacing: .05em;
+    font-weight: 400;
+  }
+}
+
+// FAQ ---------------------------------------------------------
+.faq {
+  height: u(1927);
+  background: $navy-deep;
+  color: $white;
+
+  &__title {
+    padding-top: u(146);
+    text-align: center;
+  }
+
+  &__en {
+    display: block;
+    @include gradient-text(linear-gradient(90deg, #f5e9d2, #fbf1e2));
+    width: max-content;
+    margin: 0 auto;
+    @include serif(600);
+    font-size: u(122);
+    line-height: u(168);
+  }
+
+  .divider {
+    margin-top: u(-2);
+  }
+
+  &__ja {
+    display: block;
+    margin-top: u(14);
+    @include serif(600);
+    font-size: u(55);
+    line-height: u(84);
+    letter-spacing: .03em;
+    color: #fbf4e4;
+  }
+
+  &__list {
+    position: absolute;
+    left: u(380);
+    top: u(509);
+    width: u(1160);
+  }
+
+  &__item {
+    margin-bottom: u(29);
+    background-size: 100% auto;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-color: $navy;
+
+    @each $n in (1, 2, 3, 4, 5, 6) {
+      &--#{$n} {
+        background-image: url('../images/faq-#{$n}.jpg');
+      }
+    }
+  }
+
+  &__q {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: u(60);
+    color: $white;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  &__mark {
+    width: u(60);
+    padding-bottom: u(8);
+    font-size: u(41);
+    font-weight: 300;
+    line-height: u(52);
+    text-align: center;
+  }
+
+  &__text {
+    margin-left: u(30);
+    padding-bottom: u(4);
+    font-size: u(29);
+    letter-spacing: .075em;
+  }
+
+  &__icon {
+    position: absolute;
+    right: u(26);
+    top: u(29);
+    width: u(30);
+    height: u(2);
+    background: $white;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: $white;
+      transform: rotate(90deg);
+      transition: transform .25s;
+    }
+  }
+
+  &__item.is-open &__icon::after {
+    transform: rotate(0);
+  }
+
+  &__a {
+    color: #333;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .3s ease;
+    overflow: hidden;
+
+    p {
+      min-height: 0;
+      overflow: hidden;
+      padding: 0 u(20) 0 u(28);
+      font-size: u(25);
+      line-height: u(42);
+      letter-spacing: .008em;
+      font-feature-settings: 'palt';
+      white-space: nowrap;
+    }
+  }
+
+  &__item.is-open &__a {
+    grid-template-rows: 1fr;
+
+    p {
+      padding-top: u(12);
+      height: u(119);
+    }
+  }
+
+  &__item--6.is-open &__a p {
+    height: u(160);
+  }
+}
+
+// Access ------------------------------------------------------
+.access {
+  height: u(1687);
+  background: url('../images/bg-access.jpg') center top / 100% 100% no-repeat;
+
+  &__title {
+    padding-top: u(158);
+    text-align: center;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__en {
+    @include gradient-text(linear-gradient(90deg, #b59150 0%, #b2904f 48%, #ba9e68 55%, #a58a31 66%, #a58a31 100%));
+    width: max-content;
+    margin: 0 auto;
+    @include serif(600);
+    font-size: u(120);
+    line-height: u(130);
+    letter-spacing: .03em;
+  }
+
+  &__ja {
+    margin-top: u(16);
+    @include serif(600);
+    font-size: u(57);
+    line-height: u(84);
+    letter-spacing: .016em;
+  }
+
+  &__panel {
+    position: absolute;
+    left: u(120);
+    top: u(436);
+    width: u(1680);
+    height: u(1065);
+    background: $white;
+  }
+
+  &__map {
+    width: u(1680);
+    height: u(460);
+    overflow: hidden;
+    background: #e8eaed;
+
+    // Google snaps the embed to whole zoom levels, so the frame keeps a fixed
+    // size and `zoom` scales it to the box. That reproduces the design's framing
+    // with sharp labels at every desktop width. --map-zoom is set in main.js.
+    iframe {
+      display: block;
+      width: 1262.59px;
+      height: 345.71px;
+      max-width: none;
+      border: 0;
+      zoom: var(--map-zoom, 1.3306);
+    }
+  }
+
+  &__h {
+    position: absolute;
+    left: u(656);
+    top: u(534);
+    width: u(369);
+    height: u(45);
+    background: $navy;
+    color: $white;
+    text-align: center;
+    font-weight: 700;
+    font-size: u(29);
+    line-height: u(45);
+    letter-spacing: .1em;
+
+    &--car {
+      top: u(768);
+    }
+  }
+
+  &__row {
+    position: absolute;
+    left: u(58);
+    top: u(592);
+    display: flex;
+    gap: u(42);
+
+    &--car {
+      top: u(826);
+    }
+  }
+
+  &__box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: u(759);
+    height: u(147);
+    border-radius: u(10);
+    background: #ebeef1;
+
+    p {
+      margin: u(-4) 0 0 u(44);
+      font-size: u(28);
+      line-height: u(56);
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    &--2 p {
+      margin-left: u(55);
+    }
+
+    &--car,
+    &--info {
+      height: u(190);
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: u(120);
+    height: u(120);
+    margin-left: u(64);
+    border-radius: 50%;
+    background: $navy;
+    color: $white;
+    flex: none;
+
+    svg {
+      width: u(80);
+      height: u(92);
+    }
+
+    .is-car {
+      height: u(75);
+    }
+  }
+
+  &__pin,
+  &__tel-icon {
+    position: absolute;
+    left: u(40);
+    color: $navy;
+  }
+
+  &__pin {
+    top: u(30);
+    width: u(52);
+    height: u(71);
+  }
+
+  &__tel-icon {
+    top: u(110);
+    width: u(52);
+    height: u(60);
+  }
+
+  address {
+    position: absolute;
+    left: u(120);
+    top: u(22);
+    font-weight: 500;
+    font-size: u(30.5);
+    line-height: u(42);
+    letter-spacing: .05em;
+    white-space: nowrap;
+  }
+
+  &__tel {
+    position: absolute;
+    left: u(115);
+    top: u(119);
+    font-weight: 400;
+    font-size: u(31);
+    line-height: u(42);
+    letter-spacing: .07em;
+  }
+}
+
+// Footer ------------------------------------------------------
+.footer {
+  height: u(716);
+  background: $navy;
+  color: $white;
+
+  &__nav {
+    position: absolute;
+    left: u(254);
+    top: u(132);
+    display: grid;
+    grid-template-columns: u(525) u(527) auto;
+    grid-template-rows: repeat(3, u(60));
+    grid-auto-flow: row;
+    font-size: u(33);
+    line-height: u(60);
+    letter-spacing: .07em;
+    white-space: nowrap;
+
+    a {
+      position: relative;
+      display: block;
+      padding-left: u(40);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: u(6);
+        top: u(15);
+        width: u(12);
+        height: u(34);
+        background: url('../images/chevron.svg') center / 100% 100% no-repeat;
+      }
+
+      &:hover {
+        color: $gold-pale;
+      }
+    }
+  }
+
+  .cta-btns {
+    position: absolute;
+    left: u(254);
+    top: u(456);
+    width: u(1413);
+  }
+}

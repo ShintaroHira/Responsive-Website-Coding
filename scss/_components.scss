@@ -1,0 +1,355 @@
+@use 'settings' as *;
+
+// Ornamental rule used under section titles
+.divider {
+  display: block;
+  width: u(880);
+  height: u(12);
+  margin: 0 auto;
+  background: url('../images/divider-white.svg') center / 100% 100% no-repeat;
+
+  &--gold {
+    background-image: url('../images/divider-gold.svg');
+  }
+}
+
+// EN + rule + JA heading
+.heading {
+  display: block;
+  text-align: center;
+
+  &__en,
+  &__ja {
+    display: block;
+    @include serif(600);
+  }
+
+  &--light {
+    color: $white;
+  }
+}
+
+// Bordered tables
+.table-wrap {
+  box-shadow: 0 u(4) u(14) rgba(12, 16, 80, .25);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: $white;
+  font-weight: 350;
+  color: $navy;
+
+  th,
+  td {
+    border: u(2) solid $navy;
+    text-align: left;
+    font-weight: 350;
+  }
+
+  thead th {
+    background: $navy-gradient;
+    color: $white;
+    text-align: center;
+  }
+}
+
+// Reservation buttons
+.cta-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: u(450);
+  height: u(99);
+  padding-bottom: u(5);
+  color: $white;
+  @include serif(600);
+  font-size: u(36);
+  letter-spacing: .05em;
+  transition: filter .2s;
+
+  &:hover {
+    filter: brightness(1.08);
+  }
+
+  &--tel {
+    background: linear-gradient(90deg, #0a3cae 0%, #000f58 100%);
+    gap: u(26);
+    padding-left: u(4);
+    font-size: u(36);
+    letter-spacing: .045em;
+    line-height: 1;
+
+    svg {
+      width: u(60);
+      height: u(74);
+      color: $white;
+    }
+
+    span {
+      display: block;
+    }
+
+    small {
+      display: block;
+      font-size: u(29);
+      margin-bottom: u(5);
+      letter-spacing: .03em;
+    }
+  }
+
+  &--web {
+    background: $gold-gradient;
+  }
+
+  &--line {
+    background: #0dc438;
+  }
+}
+
+// Consultation block (repeated three times)
+.cta {
+  --logo-x: #{u(14)};
+  --rule-x: #{u(-1)};
+  height: u(1129);
+  background: $white;
+
+  &--1 {
+    --logo-x: #{u(22)};
+    --rule-x: #{u(2)};
+    height: u(1128);
+  }
+
+  &--3 {
+    --logo-x: #{u(16)};
+    --rule-x: #{u(1)};
+  }
+
+  &__inner {
+    position: absolute;
+    left: u(249);
+    top: 0;
+    width: u(1414);
+  }
+
+  &--1 &__inner {
+    left: u(254);
+    top: u(-6);
+  }
+
+  &--3 &__inner {
+    top: u(-10);
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: u(146);
+    @include serif(600);
+    font-size: u(44);
+    line-height: u(60);
+    letter-spacing: .012em;
+    color: $navy;
+    white-space: nowrap;
+
+    &::before,
+    &::after {
+      content: '';
+      width: u(192);
+      height: u(2);
+      margin-top: u(10);
+      background: $navy;
+    }
+  }
+
+  &__lead {
+    margin: u(37) 0 0 u(224);
+    font-size: u(30);
+    line-height: u(47.5);
+    letter-spacing: .06em;
+    text-indent: u(11);
+    font-feature-settings: 'palt';
+    white-space: nowrap;
+  }
+
+  &__checks {
+    display: grid;
+    grid-template-columns: u(630) 1fr;
+    margin: u(59) 0 0 u(149);
+    font-size: u(29);
+    line-height: u(48);
+    letter-spacing: .11em;
+    white-space: nowrap;
+
+    li {
+      position: relative;
+      padding-left: u(38);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: u(4);
+        top: u(15);
+        width: u(9);
+        height: u(16);
+        border-right: u(2) solid $navy;
+        border-bottom: u(2) solid $navy;
+        transform: rotate(40deg) skewX(-6deg);
+      }
+    }
+  }
+
+  &--3 &__checks {
+    margin-top: u(51);
+  }
+
+  &__clinic {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: u(640);
+
+    .logo {
+      position: absolute;
+      left: var(--logo-x);
+      top: u(562);
+    }
+
+    .logo__kana {
+      position: absolute;
+      left: u(164);
+      top: u(127);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: var(--rule-x);
+      top: u(724);
+      width: u(623);
+      height: u(6);
+      background: $navy;
+    }
+  }
+
+  &__address {
+    position: absolute;
+    left: u(27);
+    top: u(738);
+    font-size: u(30);
+    line-height: u(35);
+    letter-spacing: .04em;
+    white-space: nowrap;
+  }
+
+  .cta-btns {
+    position: absolute;
+    left: 0;
+    top: u(900);
+    width: 100%;
+  }
+}
+
+// Logo lock-up (vector mark + live kana line)
+.logo {
+  display: block;
+
+  &__img {
+    width: u(569);
+    height: u(138);
+    max-width: none;
+  }
+
+  &__kana {
+    display: block;
+    font-family: $serif;
+    font-weight: 500;
+    font-feature-settings: normal;
+    font-size: u(20);
+    letter-spacing: .087em;
+    white-space: nowrap;
+  }
+
+  &--navy {
+    color: $navy;
+
+    .logo__kana {
+      color: #111;
+    }
+  }
+}
+
+// Opening-hours table
+.hours {
+  position: absolute;
+  left: u(669);
+  top: u(570);
+  width: u(749);
+  height: u(242);
+  padding: 0 u(13);
+  border: u(2) solid $navy;
+  border-radius: u(24);
+  font-size: u(24);
+  letter-spacing: .03em;
+
+  table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  tr:first-child > * { height: u(82); }
+  tr:nth-child(2) > * { height: u(80); }
+
+  th:nth-child(1) { width: u(181); }
+  tr > :nth-child(2),
+  tr > :nth-child(3) { width: u(72); }
+  tr > :nth-child(4),
+  tr > :nth-child(6) { width: u(77); }
+  tr > :nth-child(5),
+  tr > :nth-child(7) { width: u(80); }
+
+  th,
+  td {
+    padding: 0;
+    text-align: center;
+    font-weight: 350;
+    white-space: nowrap;
+  }
+
+  tr + tr th,
+  tr + tr td {
+    border-top: u(2) solid $navy;
+  }
+
+  th[scope='col'] {
+    padding-top: u(6);
+    font-size: u(23);
+  }
+
+  i {
+    display: inline-block;
+    width: u(25);
+    height: u(25);
+    border-radius: 50%;
+    background: $navy;
+    vertical-align: middle;
+  }
+
+  s {
+    display: inline-block;
+    width: u(25);
+    height: u(3);
+    background: $navy;
+    vertical-align: middle;
+  }
+}

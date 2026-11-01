@@ -1,0 +1,109 @@
+@use 'settings' as *;
+
+// Lines re-measured against the design once the section backgrounds were rebuilt.
+// Desktop only; re-check them if the wording changes.
+@include pc {
+  .page.page.page.page.page main > section:nth-child(10) > h2:nth-child(1) > span:nth-child(1) {
+    font-size: u(115);
+    letter-spacing: 0.0em;
+    line-height: u(150);
+    transform: translate(u(1), u(0));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(10) > p:nth-child(2) {
+    font-size: u(35.4);
+    letter-spacing: 0.0395em;
+    line-height: u(50);
+    transform: translate(u(-4), u(0));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(2) > div:nth-child(1) > h2:nth-child(1) {
+    font-size: u(46);
+    font-weight: 500;
+    letter-spacing: 0.0675em;
+    line-height: u(66);
+    transform: translate(u(4), u(0));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(11) > p:nth-child(4) {
+    font-size: u(35);
+    letter-spacing: 0.0457em;
+    line-height: u(50);
+    transform: translate(u(-13), u(3));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(12) > h2:nth-child(1) > span:nth-child(1) {
+    font-size: u(120.6);
+    letter-spacing: 0.1227em;
+    line-height: u(130);
+    transform: translate(u(9), u(-2));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(3) > h2:nth-child(1) > span:nth-child(1) {
+    font-size: u(60.2);
+    font-weight: 600;
+    letter-spacing: 0.0477em;
+    word-spacing: u(11);
+    line-height: u(90);
+    transform: translate(u(-2.0), u(6.0));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(3) > h2:nth-child(1) > span:nth-child(2) {
+    font-size: u(54.9);
+    font-weight: 700;
+    letter-spacing: 0.0453em;
+    line-height: u(90);
+    transform: translate(u(-2.0), u(0.0));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(11) > h2:nth-child(1) > span:nth-child(3) {
+    font-size: u(57.8);
+    letter-spacing: 0.069em;
+    line-height: u(84);
+    transform: translate(u(5.5), u(0.0));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(14) > h2:nth-child(1) > span:nth-child(3) {
+    transform: translate(u(-1.5), u(-0.5));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(5) > p:nth-child(2) {
+    transform: translate(u(-3.0), u(1.0));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(7) > p:nth-child(3) {
+    transform: translate(u(0), u(-4));
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(17) > p:nth-child(2) {
+    letter-spacing: -0.003em;
+    white-space: nowrap;
+  }
+
+  .page.page.page.page.page main > section:nth-child(15) > div:nth-child(1) > h2:nth-child(1) > span:nth-child(1) {
+    letter-spacing: -0.0345em;
+    transform: translate(u(1), u(0));
+  }
+
+  .page.page.page.page.page main > section:nth-child(18) > div:nth-child(1) > h2:nth-child(1) > span:nth-child(1) {
+    letter-spacing: -0.0345em;
+    transform: translate(u(1), u(0));
+  }
+
+  .page.page.page.page.page main > section:nth-child(21) > div:nth-child(1) > h2:nth-child(1) > span:nth-child(1) {
+    letter-spacing: -0.0345em;
+    transform: translate(u(1), u(0));
+  }
+
+}
